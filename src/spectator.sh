@@ -5,7 +5,6 @@ sign=null
 vk_user_id=null
 vk_ts=null
 vk_ref=null
-access_token=null
 
 function authenticate() {
 	# 1 - sign: (string): <sign>
