@@ -5,6 +5,7 @@ sign=null
 vk_user_id=null
 vk_ts=null
 vk_ref=null
+user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36"
 
 function authenticate() {
 	# 1 - sign: (string): <sign>
@@ -28,7 +29,7 @@ function authenticate() {
 function generate_jwk_token() {
 	response=$(curl --request POST \
 		--url "$api/generate_jwt/vk/" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--data '{
 			"query": "'$params'"
@@ -42,14 +43,14 @@ function generate_jwk_token() {
 function get_tasks() {
 	curl --request GET \
 		--url "$api/owner/tasks/?access_token=$access_token" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json"
 }
 
 function get_badges() {
 	curl --request GET \
 		--url "$api/owner/badges/?access_token=$access_token" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json"
 }
 
@@ -61,7 +62,7 @@ function create_task() {
 	# 5 - name: (string): <name>
 	curl --request POST \
 		--url "$api/owner/tasks/?access_token=$access_token" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--data '{
 			"task": {
@@ -84,7 +85,7 @@ function edit_task() {
 	# 6 - name: (string): <name>
 	curl --request POST \
 		--url "$api/owner/tasks/?access_token=$access_token" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--data '{
 			"task": {
